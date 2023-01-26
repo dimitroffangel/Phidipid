@@ -5,6 +5,7 @@ import matplotlib.pyplot
 from nltk.corpus import stopwords
 import os
 import pandas
+import seaborn
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -27,3 +28,11 @@ for dirname, _, filenames in os.walk(dataDirectoryFolder):
 
 trueDataNews = pandas.read_csv(dataDirectoryFolder + 'True.csv')
 falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv')
+trueDataNews['category'] = 1
+falseDataNews['category'] = 0
+allNewsData = pandas.concat([trueDataNews, falseDataNews])
+
+def printTrueDataNews():
+    matplotlib.pyplot.close()
+    seaborn.countplot(allNewsData, x='category')
+    matplotlib.pyplot.show()
