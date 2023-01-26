@@ -30,5 +30,3 @@ falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv')
 trueDataNews['category'] = 1
 falseDataNews['category'] = 0
 allNewsData = pandas.concat([trueDataNews, falseDataNews])
-
-
