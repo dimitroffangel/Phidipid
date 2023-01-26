@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 #local folders to ignore
-/data
-/__pycache__
+data/
+__pycache__/
