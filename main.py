@@ -17,16 +17,18 @@ from warnings import simplefilter
 
 simplefilter("ignore", category=ConvergenceWarning)
 
-stopwords = nltk.corpus.stopwords.words('english')
-
 dataDirectoryFolder = './data/'
 
-for dirname, _, filenames in os.walk(dataDirectoryFolder):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
+def openFiles():
+    for directoryName, _, filenames in os.walk(dataDirectoryFolder):
+        for filename in filenames:
+            print(os.path.join(directoryName, filename))
+
+
+stopwords = nltk.corpus.stopwords.words('english')
 
 trueDataNews = pandas.read_csv(dataDirectoryFolder + 'True.csv')
 falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv')
-trueDataNews['category'] = 1
-falseDataNews['category'] = 0
+trueDataNews['class'] = 1
+falseDataNews['class'] = 0
 allNewsData = pandas.concat([trueDataNews, falseDataNews])
