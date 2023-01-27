@@ -17,7 +17,8 @@ from warnings import simplefilter
 
 simplefilter("ignore", category=ConvergenceWarning)
 
-dataDirectoryFolder = './data/hermes'
+nltk.download('stopwords')
+dataDirectoryFolder = './data/hermes/'
 
 def openFiles():
     for directoryName, _, filenames in os.walk(dataDirectoryFolder):
@@ -27,8 +28,8 @@ def openFiles():
 
 stopwords = nltk.corpus.stopwords.words('english')
 
-trueDataNews = pandas.read_csv(dataDirectoryFolder + 'True.csv')
-falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv')
+trueDataNews = pandas.read_csv(dataDirectoryFolder + 'True.csv', delimiter=',')
+falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv', delimiter=',')
 trueDataNews['class'] = 1
 falseDataNews['class'] = 0
 allNewsData = pandas.concat([trueDataNews, falseDataNews])
