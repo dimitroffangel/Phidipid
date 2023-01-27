@@ -1,0 +1,2 @@
+The true and the false data news do not have an intersection in the subject
+	- is the subject important for the classification ? 

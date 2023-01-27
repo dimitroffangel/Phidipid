@@ -17,7 +17,7 @@ from warnings import simplefilter
 
 simplefilter("ignore", category=ConvergenceWarning)
 
-dataDirectoryFolder = './data/'
+dataDirectoryFolder = './data/hermes'
 
 def openFiles():
     for directoryName, _, filenames in os.walk(dataDirectoryFolder):
