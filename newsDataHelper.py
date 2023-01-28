@@ -2,10 +2,10 @@ import numpy
 import re as regularExpression
 from nltk.stem import PorterStemmer
 
-from main import falseDataNews, trueDataNews, stopwords
+from main import stopwords
 
-def intersectNewsSubjects():
-    return numpy.intersect1d(falseDataNews.subject.unique(), trueDataNews.subject.unique())
+def intersectNewsSubjects(lhsData, rhsData):
+    return numpy.intersect1d(lhsData.subject.unique(), rhsData.subject.unique())
 
 def removeNoisyData(data, numberOfWords):
     corpus = []
