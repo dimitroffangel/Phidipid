@@ -1,3 +1,4 @@
 The true and the false data news do not have an intersection in the subject
 	- is the subject important for the classification ? 
 AAaaaahm MultinomialNB is getting good results based on words in titles ???? 
+By putting the mercury data the cover percent is 69% and the false negative are 31% 
