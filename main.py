@@ -18,18 +18,16 @@ from warnings import simplefilter
 simplefilter("ignore", category=ConvergenceWarning)
 
 nltk.download('stopwords')
-dataDirectoryFolder = './data/hermes/'
-
-def openFiles():
-    for directoryName, _, filenames in os.walk(dataDirectoryFolder):
-        for filename in filenames:
-            print(os.path.join(directoryName, filename))
-
+hermesDataDirectoryFolder = './data/hermes/'
+mercuryDataDirectoryFolder = './data/mercury/'
 
 stopwords = nltk.corpus.stopwords.words('english')
 
-trueDataNews = pandas.read_csv(dataDirectoryFolder + 'True.csv', delimiter=',')
-falseDataNews = pandas.read_csv(dataDirectoryFolder + 'Fake.csv', delimiter=',')
+trueDataNews = pandas.read_csv(hermesDataDirectoryFolder + 'True.csv')
+falseDataNews = pandas.read_csv(hermesDataDirectoryFolder + 'Fake.csv')
+falseMercuryDataNews = pandas.read_csv(mercuryDataDirectoryFolder + 'fake.csv')
+englishMercuryDataNews = falseMercuryDataNews.loc[(falseMercuryDataNews['language'] == 'english') & (falseMercuryDataNews['title'].notna())]
+
 trueDataNews['class'] = 1
 falseDataNews['class'] = 0
 allNewsData = pandas.concat([trueDataNews, falseDataNews])

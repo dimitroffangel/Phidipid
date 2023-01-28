@@ -15,6 +15,6 @@ def removeNoisyData(data, numberOfWords):
         document = document.split()
         porterStemmer = PorterStemmer()
         document = [porterStemmer.stem(word) for word in document if not word in set(stopwords)]
-        document = ' '.join(document)
+        document = ' '.join(document) 
         corpus.append(document)
     return corpus
