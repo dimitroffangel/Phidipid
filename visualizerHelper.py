@@ -37,13 +37,14 @@ def plotTrueNewsSubject():
     chart=seaborn.countplot(x='subject',  data=trueDataNews, linewidth=10)
     matplotlib.pyplot.show()
 
-def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, bNormalizeConfusionMatrix=False, title='Confusion Matrix', colourMap=matplotlib.pyplot.cm.Blues, figureSize=(9,7)):
+def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, windowTitle='Figure', bNormalizeConfusionMatrix=False, title='Confusion Matrix', colourMap=matplotlib.pyplot.cm.Blues, figureSize=(9,7)):
     matrix = confusion_matrix(correctTargetValues, estimatedTargetValues)
 
     if bNormalizeConfusionMatrix:
         matrix = matrix.astype('float') / matrix.sum(axis=1)[:, numpy.newaxis]
     
     matplotlib.pyplot.close()
+    matplotlib.pyplot.figure(num=windowTitle)
     matplotlib.pyplot.imshow(matrix, interpolation='nearest', cmap=colourMap)
     matplotlib.pyplot.title(title)
 
@@ -58,7 +59,7 @@ def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, b
             horizontalalignment='center',
             size=int((figureSize[0] / 10) * 38),
             color='white' if matrix[i,j] > threshold else 'black')
-    
+
     matplotlib.pyplot.tight_layout()
     matplotlib.pyplot.ylabel('True label')
     matplotlib.pyplot.xlabel('Predicted lable')

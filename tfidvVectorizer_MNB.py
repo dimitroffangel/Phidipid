@@ -34,17 +34,17 @@ predictionTrainY = cross_val_predict(classifier, xTrain, yTrain, cv=3, n_jobs=6)
 classifier.fit(xTrain, yTrain)
 predictTestY = classifier.predict(xTest)
 
-def plotConfusionMatrix(yExpected, yPredicted, classes):
+def plotConfusionMatrix(yExpected, yPredicted, classes, windowTitle="Figure"):
     print(accuracy_score(yExpected, yPredicted))
-    visualizerHelper.plot_confusion_matrix(yExpected, yPredicted, classes=classes)
-    visualizerHelper.plot_confusion_matrix(yExpected, yPredicted, classes=classes, bNormalizeConfusionMatrix=True)
+    visualizerHelper.plot_confusion_matrix(yExpected, yPredicted, windowTitle=windowTitle, classes=classes)
+    visualizerHelper.plot_confusion_matrix(yExpected, yPredicted, windowTitle=windowTitle, classes=classes, bNormalizeConfusionMatrix=True)
 
-plotConfusionMatrix(yTrain, predictionTrainY, main.allNewsData['class'].unique())
-plotConfusionMatrix(yTest, predictTestY, main.allNewsData['class'].unique())
+plotConfusionMatrix(yTrain, predictionTrainY, main.allNewsData['class'].unique(), windowTitle="Hermes train Y")
+plotConfusionMatrix(yTest, predictTestY, main.allNewsData['class'].unique(), windowTitle="Hermes test Y")
 
 mercuryCorpus = newsDataHelper.removeNoisyData(main.englishMercuryDataNews['title'].values, len(main.englishMercuryDataNews['title'].values))
 X_MercuryCorpus = countVectorizer.fit_transform(mercuryCorpus).toarray()
 
 mercuryPrediction = classifier.predict(X_MercuryCorpus)
 zeros = numpy.zeros(len(X_MercuryCorpus))
-plotConfusionMatrix(zeros, mercuryPrediction, numpy.flip(main.allNewsData['class'].unique()))
+plotConfusionMatrix(zeros, mercuryPrediction, main.allNewsData['class'].unique(), windowTitle="Mercury Y")
