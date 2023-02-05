@@ -2,6 +2,7 @@ import pandas
 import re as regularExpressions
 
 import main
+import newsDataHelper
 import visualizerHelper
 
 def numberOfTwitterUsernameMentions(document):
@@ -25,3 +26,19 @@ for _, row in main.trueDataNews.iterrows():
 print("number of Tweets in False news", sumTweetsInFalseNews)
 print("number of Tweets in True news", sumTweetsInTrueNews)
 visualizerHelper.plotData(listOfNumberOfTweets)
+
+numberOfUniqueWordsInFalseNews = newsDataHelper.countUniqueWords(main.falseDataNews['text'].values)
+numberOfUniqueWordsInTrueNews = newsDataHelper.countUniqueWords(main.trueDataNews['text'].values)
+
+numberOfUniqueWordsInFalseNewsPostTokenization = newsDataHelper.countUniqueWords(
+    newsDataHelper.removeNoisyData(
+        main.falseDataNews['text'].values, 
+        len(main.falseDataNews['text'].values)
+    )
+)
+numberOfUniqueWordsInTrueNewsPostTokenization = newsDataHelper.countUniqueWords(
+    newsDataHelper.removeNoisyData(
+        main.trueDataNews['text'].values, 
+        len(main.trueDataNews['text'].values)
+    )
+)

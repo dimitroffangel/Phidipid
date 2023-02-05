@@ -18,3 +18,12 @@ def removeNoisyData(data, numberOfWords):
         document = ' '.join(document) 
         corpus.append(document)
     return corpus
+
+def countUniqueWords(listOfDocuments):
+    foundWords = set()
+    for document in listOfDocuments:
+        words = document.split()
+        for word in words:
+            if word not in foundWords:
+                foundWords.add(word)
+    return foundWords
