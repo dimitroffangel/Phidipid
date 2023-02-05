@@ -5,4 +5,4 @@ By putting the mercury data the cover percent is 69% and the false negative are 
 
 Fake news data contains a lot of tweets, which on its own creates potential of containing fake news
 
-Fake news has more unique words than true news 
+Fake news has more unique words than true news, but the most used words remain overall the same number of set

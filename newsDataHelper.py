@@ -33,8 +33,6 @@ def wordsFrequency(listOfDocuments):
     countVectorizer = CountVectorizer().fit(listOfDocuments)
     transformedDocuments = countVectorizer.transform(listOfDocuments)
     continousBagOfWords = transformedDocuments.sum(axis= 0)
-    print(continousBagOfWords)
-    print(countVectorizer.vocabulary_.items())
     wordDictioanry = [(currentWord, continousBagOfWords[0, currentWordIndex]) for currentWord, currentWordIndex in countVectorizer.vocabulary_.items()]
     sortedWordDictionary = sorted(wordDictioanry, key = lambda x: x[1], reverse=True)
     return sortedWordDictionary
