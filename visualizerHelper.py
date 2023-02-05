@@ -32,7 +32,7 @@ def plotFalseNewsSubject():
 def plotData(data):
     matplotlib.pyplot.close()
     # barplot=seaborn.barplot(data=data, x='class', y='numberOfTweets', estimator='scalar')
-    data.plot.bar(x='class', y='numberOfTweets', rot = 0)
+    data.plot.bar(x='class', y='numberOfTweets')
     matplotlib.pyplot.show()
 
 ## TODO::order the x label to be under the y-label 
