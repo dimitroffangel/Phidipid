@@ -1,6 +1,8 @@
 import matplotlib.pyplot
 import pandas
 import re as regularExpressions
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_selection import chi2
 
 import main
 import newsDataHelper
@@ -42,3 +44,13 @@ uniqueWordsTrueDataNews = newsDataHelper.wordsFrequency(trueNewsTokenization)[:1
 
 visualizerHelper.plotListOfTuples(uniqueWordsFalseDataNews[:21])
 visualizerHelper.plotListOfTuples(uniqueWordsTrueDataNews[:21])
+
+numberOfWords = len(main.allNewsData['text'].values)
+corpus = newsDataHelper.removeNoisyData(main.allNewsData['text'].values, numberOfWords)
+countVectorizer = CountVectorizer(max_features=500)
+X = countVectorizer.fit_transform(corpus).toarray()
+chi2Score = chi2(X, main.allNewsData['text'])
+chi2PFeaturesStatistics = chi2Score[0]
+chi2PValues = chi2Score[1]
+dependentChiFeatures = list(zip(countVectorizer.get_feature_names(), chi2PFeaturesStatistics))
+visualizerHelper.plotListOfTuples(uniqueWordsFalseDataNews)
