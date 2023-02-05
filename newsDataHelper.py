@@ -1,6 +1,7 @@
+from nltk.stem import PorterStemmer
 import numpy
 import re as regularExpression
-from nltk.stem import PorterStemmer
+from sklearn.feature_extraction.text import CountVectorizer
 
 from main import stopwords
 
@@ -27,3 +28,13 @@ def countUniqueWords(listOfDocuments):
             if word not in foundWords:
                 foundWords.add(word)
     return foundWords
+
+def wordsFrequency(listOfDocuments):
+    countVectorizer = CountVectorizer().fit(listOfDocuments)
+    transformedDocuments = countVectorizer.transform(listOfDocuments)
+    continousBagOfWords = transformedDocuments.sum(axis= 0)
+    print(continousBagOfWords)
+    print(countVectorizer.vocabulary_.items())
+    wordDictioanry = [(currentWord, continousBagOfWords[0, currentWordIndex]) for currentWord, currentWordIndex in countVectorizer.vocabulary_.items()]
+    sortedWordDictionary = sorted(wordDictioanry, key = lambda x: x[1], reverse=True)
+    return sortedWordDictionary

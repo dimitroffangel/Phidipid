@@ -42,3 +42,6 @@ numberOfUniqueWordsInTrueNewsPostTokenization = newsDataHelper.countUniqueWords(
         len(main.trueDataNews['text'].values)
     )
 )
+
+uniqueWordsFalseDataNews = newsDataHelper.wordsFrequency(main.falseDataNews['text'].values)[:100]
+uniqueWordsTrueDataNews = newsDataHelper.wordsFrequency(main.trueDataNews['text'].values)[:100]
