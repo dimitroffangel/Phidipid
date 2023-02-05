@@ -6,7 +6,6 @@ import visualizerHelper
 
 def numberOfTwitterUsernameMentions(document):
     twitterUsernameRegex = regularExpressions.compile(r'@([A-Za-z0-9_]+)')
-    counter = 0
     return len(regularExpressions.findall(twitterUsernameRegex, document))
 
 print(main.falseDataNews['text'][0])
