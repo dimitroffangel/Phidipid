@@ -41,6 +41,14 @@ def plotTrueNewsSubject():
     chart=seaborn.countplot(x='subject',  data=trueDataNews)
     matplotlib.pyplot.show()
 
+def plotListOfTuples(list):
+    matplotlib.pyplot.close()
+    matplotlib.pyplot.figure(figsize=(16,8))
+    listOfX, listOfY = zip(*list)
+    matplotlib.pyplot.bar(listOfX, listOfY)
+    matplotlib.pyplot.show()
+
+
 def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, windowTitle='Figure', bNormalizeConfusionMatrix=False, title='Confusion Matrix', colourMap=matplotlib.pyplot.cm.Blues, figureSize=(9,7)):
     matrix = confusion_matrix(correctTargetValues, estimatedTargetValues)
 
