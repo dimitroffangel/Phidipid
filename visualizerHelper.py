@@ -26,15 +26,19 @@ def plotNewsSubject():
 ## TODO::order the x label to be under the y-label 
 def plotFalseNewsSubject():
     matplotlib.pyplot.close()
-    matplotlib.pyplot.figure(figsize=(16,8))
     chart=seaborn.countplot(x='subject',  data=falseDataNews, linewidth=10)
+    matplotlib.pyplot.show()
+
+def plotData(data):
+    matplotlib.pyplot.close()
+    # barplot=seaborn.barplot(data=data, x='class', y='numberOfTweets', estimator='scalar')
+    data.plot.bar(x='class', y='numberOfTweets', rot = 0)
     matplotlib.pyplot.show()
 
 ## TODO::order the x label to be under the y-label 
 def plotTrueNewsSubject():
     matplotlib.pyplot.close()
-    matplotlib.pyplot.figure(figsize=(16,8))
-    chart=seaborn.countplot(x='subject',  data=trueDataNews, linewidth=10)
+    chart=seaborn.countplot(x='subject',  data=trueDataNews)
     matplotlib.pyplot.show()
 
 def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, windowTitle='Figure', bNormalizeConfusionMatrix=False, title='Confusion Matrix', colourMap=matplotlib.pyplot.cm.Blues, figureSize=(9,7)):
