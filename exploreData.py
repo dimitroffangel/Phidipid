@@ -28,7 +28,7 @@ for _, row in main.trueDataNews.iterrows():
 
 print("number of Tweets in False news", sumTweetsInFalseNews)
 print("number of Tweets in True news", sumTweetsInTrueNews)
-# visualizerHelper.plotData(listOfNumberOfTweets)
+visualizerHelper.plotData(listOfNumberOfTweets)
 
 numberOfUniqueWordsInFalseNews = newsDataHelper.countUniqueWords(main.falseDataNews['text'].values)
 numberOfUniqueWordsInTrueNews = newsDataHelper.countUniqueWords(main.trueDataNews['text'].values)
@@ -53,4 +53,6 @@ chi2Score = chi2(X, main.allNewsData['text'])
 chi2PFeaturesStatistics = chi2Score[0]
 chi2PValues = chi2Score[1]
 dependentChiFeatures = list(zip(countVectorizer.get_feature_names(), chi2PFeaturesStatistics))
-visualizerHelper.plotListOfTuples(uniqueWordsFalseDataNews)
+sortedDependentChiFeatures = sorted(dependentChiFeatures, key= lambda x: x[1], reverse=True)
+print(sorteddDependentChiFeatures)
+# what happens without those words? 

@@ -35,12 +35,6 @@ def plotData(data):
     data.plot.bar(x='class', y='numberOfTweets')
     matplotlib.pyplot.show()
 
-## TODO::order the x label to be under the y-label 
-def plotTrueNewsSubject():
-    matplotlib.pyplot.close()
-    chart=seaborn.countplot(x='subject',  data=trueDataNews)
-    matplotlib.pyplot.show()
-
 def plotListOfTuples(list):
     matplotlib.pyplot.close()
     matplotlib.pyplot.figure(figsize=(16,8))
@@ -48,6 +42,11 @@ def plotListOfTuples(list):
     matplotlib.pyplot.bar(listOfX, listOfY)
     matplotlib.pyplot.show()
 
+## TODO::order the x label to be under the y-label 
+def plotTrueNewsSubject():
+    matplotlib.pyplot.close()
+    chart=seaborn.countplot(x='subject',  data=trueDataNews)
+    matplotlib.pyplot.show()
 
 def plot_confusion_matrix(correctTargetValues, estimatedTargetValues, classes, windowTitle='Figure', bNormalizeConfusionMatrix=False, title='Confusion Matrix', colourMap=matplotlib.pyplot.cm.Blues, figureSize=(9,7)):
     matrix = confusion_matrix(correctTargetValues, estimatedTargetValues)
